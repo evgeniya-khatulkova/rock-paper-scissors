@@ -3,8 +3,6 @@ function getPlayerChoice () {
     let playerSelection = prompt("Choose your destiny! Fight!")
     return playerSelection
 }
-console.log(getPlayerChoice());
-
 //random number for computer 
 // return random number from 1 to 3, which are equivalent to "rock"
 // "paper" or "scissors";
@@ -21,8 +19,6 @@ function getComputerChoice() {
     }
     return turnToWOrd
 }
-
-console.log(getComputerChoice());
 
 // get result from single round comparing computer's and player's choice playing single round
 
@@ -70,15 +66,27 @@ function tryround() {
         return "You have to choose from Rock, Paper or Scissors!!"
     }}*/
 
-    function multipleCall() {
+    /*function multipleCall() {
         for(let i = 0; i < 5; i++) {
-          tryround(i)
-          console.log(tryround());
+          let singleRound = tryround();
+          console.log(singleRound);
+        }
+    }*/
+
+    //play game for five rounds multiply calling for tryround, create counters for computer and player win
+
+
+    function multipleCall() {
+        let computerCount = 0;
+        let playerCount = 0;
+        for(let i = 0; i < 5; i++) {
+          let singleRound = tryround();
+          if(singleRound === "You win!") {
+            playerCount++;
+          }
+          else if(singleRound === "You lose!") {
+            computerCount++;
+          }
+          console.log(singleRound, computerCount, playerCount);
         }
     }
-
-
-
-    
-
-
