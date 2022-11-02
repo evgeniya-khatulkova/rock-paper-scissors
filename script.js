@@ -73,7 +73,7 @@ function tryround() {
         }
     }*/
 
-    //play game for five rounds multiply calling for tryround, create counters for computer and player win
+    //play game for five rounds multiply calling for tryround, create counters for computer and player win and compare counters finding the winner of five rounds.
 
 
     function multipleCall() {
@@ -88,5 +88,13 @@ function tryround() {
             computerCount++;
           }
           console.log(singleRound, computerCount, playerCount);
+        }
+        if(computerCount > playerCount) {
+            console.log("YOU LOST!!! TRY AGAIN.");
+        } else if(computerCount < playerCount) {
+            console.log("YOU WON!!! GREAT GOB!!!")
+        }
+        else {
+            console.log("IT IS A TIE!! TRY AGAIN.");
         }
     }
