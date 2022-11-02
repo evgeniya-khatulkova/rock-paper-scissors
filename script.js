@@ -1,7 +1,7 @@
 //random number for player 
 function getPlayerChoice () {
     let playerSelection = prompt("Choose your destiny! Fight!")
-    return playerSelection
+    return playerSelection.toLowerCase()
 }
 //random number for computer 
 // return random number from 1 to 3, which are equivalent to "rock"
@@ -17,7 +17,7 @@ function getComputerChoice() {
     } else if (random === 3) {
         turnToWOrd = "Scissors";
     }
-    return turnToWOrd
+    return turnToWOrd.toLowerCase()
 }
 
 // get result from single round comparing computer's and player's choice playing single round
@@ -29,51 +29,34 @@ function tryround() {
     let youLose = "You lose!";
     let itIsEven = "It is a tie!";
     if (playerPlay === computerPlay) {
+        console.log("It is a tie.")
         return itIsEven;
-    } else if (playerPlay === "Rock" && computerPlay === "Paper") {
+    } else if (playerPlay === "rock" && computerPlay === "paper") {
+        console.log(`You lose! ${computerPlay} beats ${playerPlay}`)
         return youLose
-    }   else if(playerPlay === "Rock" && computerPlay === "Scissors") {
+    }   else if(playerPlay === "rock" && computerPlay === "scissors") {
+        console.log(`You win! ${playerPlay} beats ${computerPlay}`)
         return youWin
-    } else if (playerPlay === "Paper" && computerPlay === "Rock") {
+    } else if (playerPlay === "paper" && computerPlay === "rock") {
+        console.log(`You win! ${playerPlay} beats ${computerPlay}`)
         return youWin
-    } else if (playerPlay === "Paper" && computerPlay === "Scissors") {
+    } else if (playerPlay === "paper" && computerPlay === "scissors") {
+        console.log(`You lose! ${computerPlay} beats ${playerPlay}.`)
         return youLose
-    } else if (playerPlay === "Scissors" && computerPlay === "Paper") {
+    } else if (playerPlay === "scissors" && computerPlay === "paper") {
+        console.log(`You win! ${playerPlay} beats ${computerPlay}`)
         return youWin
-    } else if (playerPlay === "Scissors" && computerPlay === "Rock") {
+    } else if (playerPlay === "scissors" && computerPlay === "rock") {
+        console.log(`You lose! ${computerPlay} beats ${playerPlay}`)
         return youLose
     } else {
+        console.log("Your input should be Rock, Paper or Scissors ")
         return "Your input should be Rock, Paper or Scissors "
     }
 }
 
-    /*function singleRound(getPlayerChoice, getComputerChoice) {
-    if(getPlayerChoice === "Rock" && getComputerChoice === "Paper") {
-        return `You lose! ${getComputerChoice} beats ${getComputerChoice}!`
-    } else if (getPlayerChoice === "Rock" && getComputerChoice === "Scissors") {
-        return `You win! ${getPlayerChoice} beats ${getComputerChoice}!`
-    } else if (getPlayerChoice === "Paper" && getComputerChoice === "Rock") {
-        return `You win! ${getPlayerChoice} beats ${getComputerChoice}!`
-    } else if (getPlayerChoice === "Paper" && getComputerChoice === "Scissors") {
-        return `You lose! ${getComputerChoice} beats ${getPlayerChoice}!`
-    } else if (getPlayerChoice === "Scissors" && getComputerChoice === "Rock") {
-        return `You lose! ${getComputerChoice} beats ${getPlayerChoice}!`
-    } else if (getPlayerChoice === "Scissors" && getComputerChoice === "Paper") {
-        return `You win! ${getPlayerChoice} beats ${getComputerChoice}!`
-    } else if (getPlayerChoice === getComputerChoice) {
-        return "It is a tie!"
-    } else {
-        return "You have to choose from Rock, Paper or Scissors!!"
-    }}*/
 
-    /*function multipleCall() {
-        for(let i = 0; i < 5; i++) {
-          let singleRound = tryround();
-          console.log(singleRound);
-        }
-    }*/
-
-    //play game for five rounds multiply calling for tryround, create counters for computer and player win and compare counters finding the winner of five rounds.
+    //play game for five rounds multiply calling for tryround, create counters for computer and player win and compare who won a game of five-rounds
 
 
     function multipleCall() {
@@ -87,14 +70,16 @@ function tryround() {
           else if(singleRound === "You lose!") {
             computerCount++;
           }
-          console.log(singleRound, computerCount, playerCount);
+          console.log(playerCount, computerCount);
         }
         if(computerCount > playerCount) {
             console.log("YOU LOST!!! TRY AGAIN.");
         } else if(computerCount < playerCount) {
-            console.log("YOU WON!!! GREAT GOB!!!")
+            console.log("YOU WON!!! GREAT JOB!!!")
         }
         else {
             console.log("IT IS A TIE!! TRY AGAIN.");
         }
     }
+
+    multipleCall();
