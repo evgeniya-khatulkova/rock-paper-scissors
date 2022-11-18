@@ -1,6 +1,7 @@
 var rock = document.getElementById('rock');
 var paper = document.getElementById('paper');
 var scissors = document.getElementById('scissors');
+var oneRound = document.getElementById('one-round');
 
 rock.addEventListener('click', tryround);
 paper.addEventListener('click', tryround);
@@ -32,25 +33,25 @@ function tryround(e) {
     let youLose = "You lose!";
     let itIsEven = "It is a tie!";
     if (playerPlay === computerPlay) {
-        console.log("It is a tie.")
+        oneRound.textContent = "It is a tie."
         return itIsEven;
     } else if (playerPlay === "rock" && computerPlay === "paper") {
-        console.log(`You lose! ${computerPlay} beats ${playerPlay}`)
+        oneRound.textContent = `You lose! ${computerPlay} beats ${playerPlay}`;
         return youLose
     }   else if(playerPlay === "rock" && computerPlay === "scissors") {
-        console.log(`You win! ${playerPlay} beats ${computerPlay}`)
+        oneRound.textContent = `You win! ${playerPlay} beats ${computerPlay}`;
         return youWin
     } else if (playerPlay === "paper" && computerPlay === "rock") {
-        console.log(`You win! ${playerPlay} beats ${computerPlay}`)
+        oneRound.textContent = `You win! ${playerPlay} beats ${computerPlay}`;
         return youWin
     } else if (playerPlay === "paper" && computerPlay === "scissors") {
-        console.log(`You lose! ${computerPlay} beats ${playerPlay}.`)
+        oneRound.textContent = `You lose! ${computerPlay} beats ${playerPlay}.`;
         return youLose
     } else if (playerPlay === "scissors" && computerPlay === "paper") {
-        console.log(`You win! ${playerPlay} beats ${computerPlay}`)
+        oneRound.textContent = `You win! ${playerPlay} beats ${computerPlay}`;
         return youWin
     } else if (playerPlay === "scissors" && computerPlay === "rock") {
-        console.log(`You lose! ${computerPlay} beats ${playerPlay}`)
+        oneRound.textContent = `You lose! ${computerPlay} beats ${playerPlay}`;
         return youLose
     } else {
         console.log("Your input should be Rock, Paper or Scissors ")
