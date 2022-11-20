@@ -1,11 +1,20 @@
-var rock = document.getElementById('rock');
-var paper = document.getElementById('paper');
-var scissors = document.getElementById('scissors');
+let game = document.querySelector('.field');
 var oneRound = document.getElementById('one-round');
+var resultComputer = document.getElementById('computers-count');
+var resultPlayer = document.getElementById('players-count');
+countPlayer = 0;
+countComputer = 0;
 
-rock.addEventListener('click', tryround);
-paper.addEventListener('click', tryround);
-scissors.addEventListener('click',tryround);
+
+game.addEventListener('click', getPLayerChoice);
+
+//read player's choice by id of targeted button;
+function getPLayerChoice(e) {
+    let target = e.target;
+    playerPlay = target.id;
+
+    getComputerChoice();
+}
 
 // //random number for computer 
 // return random number from 1 to 3, which are equivalent to "rock"
@@ -21,48 +30,64 @@ function getComputerChoice() {
     } else if (random === 3) {
         turnToWOrd = "Scissors";
     }
-    return turnToWOrd.toLowerCase()
+    computerPlay = turnToWOrd.toLowerCase()
+
+    tryround();
 }
 
 // get result from single round comparing computer's and player's choice playing single round
 
-function tryround(e) {
-    computerPlay = getComputerChoice();
-    playerPlay = e.target.id;
-    let youWin = "You win!";
-    let youLose = "You lose!";
-    let itIsEven = "It is a tie!";
+function tryround() {
+
+    //if(countComputer < 5 && countPlayer < 5) {
+
+    findAnswer(computerPlay, playerPlay);
+    resultComputer.textContent = countComputer;
+    resultPlayer.textContent = countPlayer;
+    console.log(countPlayer, countComputer); 
+    if (countComputer >= 5 && countComputer > countPlayer) {
+       console.log("YOU LOOOSER");
+    } else if(countPlayer >= 5 && countPlayer > countComputer){
+            console.log("YOU ARE WINNER");
+     }
+//     resultComputer.textContent = countComputer;
+//     resultPlayer.textContent = countPlayer;
+//     console.log(countPlayer, countComputer); 
+    }
+
+function findAnswer(computerPlay, playerPlay) {
+
     if (playerPlay === computerPlay) {
-        oneRound.textContent = "It is a tie."
-        return itIsEven;
+        oneRound.textContent = "It is a tie.";
     } else if (playerPlay === "rock" && computerPlay === "paper") {
         oneRound.textContent = `You lose! ${computerPlay} beats ${playerPlay}`;
-        return youLose
+        countComputer++;
     }   else if(playerPlay === "rock" && computerPlay === "scissors") {
         oneRound.textContent = `You win! ${playerPlay} beats ${computerPlay}`;
-        return youWin
+        countPlayer++;
     } else if (playerPlay === "paper" && computerPlay === "rock") {
         oneRound.textContent = `You win! ${playerPlay} beats ${computerPlay}`;
-        return youWin
+        countPlayer++;
     } else if (playerPlay === "paper" && computerPlay === "scissors") {
         oneRound.textContent = `You lose! ${computerPlay} beats ${playerPlay}.`;
-        return youLose
+        countComputer++;
     } else if (playerPlay === "scissors" && computerPlay === "paper") {
         oneRound.textContent = `You win! ${playerPlay} beats ${computerPlay}`;
-        return youWin
+        countPlayer++;
     } else if (playerPlay === "scissors" && computerPlay === "rock") {
         oneRound.textContent = `You lose! ${computerPlay} beats ${playerPlay}`;
-        return youLose
-    } else {
-        console.log("Your input should be Rock, Paper or Scissors ")
-        return "Your input should be Rock, Paper or Scissors "
+        countComputer++;
     }
 }
 
+function findWinner() {
 
-    //play game for five rounds multiply calling for tryround, create counters for computer and player win and compare who won a game of five-rounds
-
-
+    if(countComputer > countPlayer) {
+                console.log("YOU LOST!!! TRY AGAIN.");
+     } else if(countPlayer < countComputer) {
+                console.log("YOU WON!!! GREAT JOB!!!");
+            } 
+}
     // function multipleCall() {
     //     let computerCount = 0;
     //     let playerCount = 0;
@@ -75,15 +100,9 @@ function tryround(e) {
     //         computerCount++;
     //       }
     //       console.log(playerCount, computerCount);
-    //     }
+    //     }}
     //     if(computerCount > playerCount) {
     //         console.log("YOU LOST!!! TRY AGAIN.");
     //     } else if(computerCount < playerCount) {
     //         console.log("YOU WON!!! GREAT JOB!!!")
     //     }
-    //     else {
-    //         console.log("IT IS A TIE!! TRY AGAIN.");
-    //     }
-    // }
-
-    // multipleCall();
