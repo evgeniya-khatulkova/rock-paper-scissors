@@ -40,17 +40,17 @@ function getComputerChoice() {
 function tryround() {
 
     findAnswer(computerPlay, playerPlay);
-    resultComputer.textContent = countComputer;
-    resultPlayer.textContent = countPlayer;
+    resultComputer.textContent = `Computer: ${countComputer}`;
+    resultPlayer.textContent = `You: ${countPlayer}`;
     console.log(countPlayer, countComputer); 
     if (countComputer >= 5 && countComputer > countPlayer) {
-        endResult.textContent = "Unfortunately, You Lost. Try again.";
+        endResult.textContent = "Unfortunately, You Lost the Game. Try again.";
         var items = document.getElementsByClassName('button');
         for(var i = 0; i < items.length; i++) {
                 items[i].disabled= true;
             }
     } else if(countPlayer >= 5 && countPlayer > countComputer){
-        endResult.textContent= "You won! Congratulations!";
+        endResult.textContent= "You won the Game! Congratulations!";
         var items = document.getElementsByClassName('button');
         for(var i = 0; i < items.length; i++) {
                 items[i].disabled= true;
