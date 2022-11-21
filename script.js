@@ -2,9 +2,9 @@ let game = document.querySelector('.field');
 var oneRound = document.getElementById('one-round');
 var resultComputer = document.getElementById('computers-count');
 var resultPlayer = document.getElementById('players-count');
+var endResult = document.getElementById('end-result');
 countPlayer = 0;
 countComputer = 0;
-
 
 game.addEventListener('click', getPLayerChoice);
 
@@ -39,20 +39,23 @@ function getComputerChoice() {
 
 function tryround() {
 
-    //if(countComputer < 5 && countPlayer < 5) {
-
     findAnswer(computerPlay, playerPlay);
     resultComputer.textContent = countComputer;
     resultPlayer.textContent = countPlayer;
     console.log(countPlayer, countComputer); 
     if (countComputer >= 5 && countComputer > countPlayer) {
-       console.log("YOU LOOOSER");
+        endResult.textContent = "Unfortunately, You Lost. Try again.";
+        var items = document.getElementsByClassName('button');
+        for(var i = 0; i < items.length; i++) {
+                items[i].disabled= true;
+            }
     } else if(countPlayer >= 5 && countPlayer > countComputer){
-            console.log("YOU ARE WINNER");
+        endResult.textContent= "You won! Congratulations!";
+        var items = document.getElementsByClassName('button');
+        for(var i = 0; i < items.length; i++) {
+                items[i].disabled= true;
+            }
      }
-//     resultComputer.textContent = countComputer;
-//     resultPlayer.textContent = countPlayer;
-//     console.log(countPlayer, countComputer); 
     }
 
 function findAnswer(computerPlay, playerPlay) {
@@ -79,30 +82,3 @@ function findAnswer(computerPlay, playerPlay) {
         countComputer++;
     }
 }
-
-function findWinner() {
-
-    if(countComputer > countPlayer) {
-                console.log("YOU LOST!!! TRY AGAIN.");
-     } else if(countPlayer < countComputer) {
-                console.log("YOU WON!!! GREAT JOB!!!");
-            } 
-}
-    // function multipleCall() {
-    //     let computerCount = 0;
-    //     let playerCount = 0;
-    //     for(let i = 0; i < 5; i++) {
-    //       let singleRound = tryround();
-    //       if(singleRound === "You win!") {
-    //         playerCount++;
-    //       }
-    //       else if(singleRound === "You lose!") {
-    //         computerCount++;
-    //       }
-    //       console.log(playerCount, computerCount);
-    //     }}
-    //     if(computerCount > playerCount) {
-    //         console.log("YOU LOST!!! TRY AGAIN.");
-    //     } else if(computerCount < playerCount) {
-    //         console.log("YOU WON!!! GREAT JOB!!!")
-    //     }
