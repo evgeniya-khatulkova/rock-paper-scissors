@@ -1,4 +1,5 @@
 let game = document.querySelector('.field');
+let reset = document.getElementById('reset');
 var oneRound = document.getElementById('one-round');
 var resultComputer = document.getElementById('computers-count');
 var resultPlayer = document.getElementById('players-count');
@@ -7,6 +8,7 @@ countPlayer = 0;
 countComputer = 0;
 
 game.addEventListener('click', getPLayerChoice);
+reset.addEventListener('click', newStart);
 
 //read player's choice by id of targeted button;
 function getPLayerChoice(e) {
@@ -42,7 +44,6 @@ function tryround() {
     findAnswer(computerPlay, playerPlay);
     resultComputer.textContent = `Computer: ${countComputer}`;
     resultPlayer.textContent = `You: ${countPlayer}`;
-    console.log(countPlayer, countComputer); 
     if (countComputer >= 5 && countComputer > countPlayer) {
         endResult.textContent = "Unfortunately, You Lost the Game. Try again.";
         var items = document.getElementsByClassName('button');
@@ -81,4 +82,20 @@ function findAnswer(computerPlay, playerPlay) {
         oneRound.textContent = `You lose! ${computerPlay} beats ${playerPlay}`;
         countComputer++;
     }
+}
+
+function newStart(e) {
+   if (e.target.id = 'reset') {
+    countPlayer = 0;
+    countComputer = 0;
+   }
+   var items = document.getElementsByClassName('button'); 
+   for(var i = 0; i < items.length; i++) {
+           items[i].disabled = false;
+   }
+   resultPlayer.textContent = 'You: 0';
+   resultComputer.textContent = 'Computer: 0';
+   oneRound.textContent = " ";
+   endResult.textContent = " ";
+
 }
